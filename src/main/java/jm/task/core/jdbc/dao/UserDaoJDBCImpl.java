@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
     private String INSERT_USER = "INSERT INTO users (`name`, `last_name`, `age`) VALUES(?, ?, ?)";
-    private static long id = 1;
+//    private static long id = 1;
 
     public UserDaoJDBCImpl() {
 
