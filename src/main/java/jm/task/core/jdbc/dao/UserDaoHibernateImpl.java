@@ -50,10 +50,6 @@ public class UserDaoHibernateImpl implements UserDao {
     public void removeUserById(long id) {
         Session session = Util.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-//        session.delete(session.get(User.class, id));
-//        при удалении из БД можно использовать не get, а load. Так как load взаимодействует с БД через proxy. То есть
-//        обращается не к БД, а к persistence context, если там нет нужного объекта, то обращается к БД только тогда,
-//        когда с эим объектом нужно что-то сделать.
         session.delete(session.load(User.class, id));
         transaction.commit();
         session.close();
