@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private String INSERT_USER = "INSERT INTO users (`name`, `last_name`, `age`) VALUES(?, ?, ?)";
+    private static final String INSERT_USER = "INSERT INTO users (`name`, `last_name`, `age`) VALUES(?, ?, ?)";
     private static long id = 1;
 
     public UserDaoJDBCImpl() {
@@ -48,7 +48,6 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
         try (
                 Connection connection = Util.getConnection();
-//             PreparedStatement statement = connection.prepareStatement(INSERT_USER, Statement.RETURN_GENERATED_KEYS);) {
                 PreparedStatement statement = connection.prepareStatement(INSERT_USER);
         ) {
             statement.setString(1, name);
