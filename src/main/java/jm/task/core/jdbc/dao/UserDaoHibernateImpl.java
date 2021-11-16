@@ -26,7 +26,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createSQLQuery(sql).addEntity(User.class).executeUpdate();
             transaction.commit();
         } catch (Exception e) {
-            if (transaction.isActive()) {
+            if (transaction !=null && transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -41,7 +41,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createSQLQuery(sql).addEntity(User.class).executeUpdate();
             transaction.commit();
         } catch (Exception e) {
-            if (transaction.isActive()) {
+            if (transaction !=null && transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -55,7 +55,7 @@ public class UserDaoHibernateImpl implements UserDao {
         session.save(new User(name, lastName, age));
         transaction.commit();
         } catch (Exception e) {
-            if (transaction.isActive()) {
+            if (transaction !=null && transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -69,7 +69,7 @@ public class UserDaoHibernateImpl implements UserDao {
         session.delete(session.load(User.class, id));
         transaction.commit();
         } catch (Exception e) {
-            if (transaction.isActive()) {
+            if (transaction !=null && transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -83,7 +83,7 @@ public class UserDaoHibernateImpl implements UserDao {
         session.beginTransaction();
         list = session.createQuery("FROM User").list();
         } catch (Exception e) {
-            if (transaction.isActive()) {
+            if (transaction !=null && transaction.isActive()) {
                 transaction.rollback();
             }
         }
@@ -98,7 +98,7 @@ public class UserDaoHibernateImpl implements UserDao {
         session.createQuery("delete from User").executeUpdate();
         transaction.commit();
         } catch (Exception e) {
-            if (transaction.isActive()) {
+            if (transaction !=null && transaction.isActive()) {
                 transaction.rollback();
             }
         }

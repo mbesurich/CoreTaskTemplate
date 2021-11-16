@@ -20,14 +20,14 @@ public class UserDaoJDBCImpl implements UserDao {
                 Connection connection = Util.getConnection();
                 Statement statement = connection.createStatement();
         ) {
-            String SQL = "CREATE TABLE IF NOT EXISTS users (\n" +
+            String sql = "CREATE TABLE IF NOT EXISTS users (\n" +
                     "    id bigint NOT NULL AUTO_INCREMENT,\n" +
                     "    name VARCHAR(45) NOT NULL,\n" +
                     "    last_name VARCHAR(45) NOT NULL,\n" +
                     "    age tinyint NOT NULL,\n" +
                     "    primary key (id)\n" +
                     ");";
-            statement.executeUpdate(SQL);
+            statement.executeUpdate(sql);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
